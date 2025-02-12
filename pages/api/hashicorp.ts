@@ -39,6 +39,9 @@ export default function handler(
 		sql += ` WHERE P.NAME LIKE '%${searchParam}%'`
 	}
 
+	// Per acceptance criteria, limit search results to 100 records maximum.
+	sql += ` LIMIT 100`
+
 	const stmt = db.prepare(sql)
 
 	let data: PersonRecord[] = []
